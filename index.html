@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmação de Presença - Festa de Encerramento & Baile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated background particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            max-width: 800px;
+            width: 100%;
+            padding: 50px;
+            position: relative;
+            z-index: 1;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .stars {
+            color: #ff6b6b;
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #2d3748;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            color: #718096;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .highlight-banner {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(238, 90, 111, 0.3);
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 10px 25px rgba(238, 90, 111, 0.3);
+            }
+            to {
+                box-shadow: 0 10px 35px rgba(238, 90, 111, 0.5);
+            }
+        }
+
+        .highlight-banner h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .highlight-banner p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .info-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-left: 5px solid #667eea;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-section::before {
+            content: '🎉';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 3rem;
+            opacity: 0.2;
+        }
+
+        .info-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-content {
+            color: #4a5568;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .highlight {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .price-box {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(72, 187, 120, 0.3);
+        }
+
+        .price-box .price {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        .price-box .price-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .deadline-box {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 700px) {
+            .deadline-box {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .confirmation-deadline {
+            background: linear-gradient(135deg, #9f7aea 0%, #805ad5 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .payment-deadline {
+            background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .event-date {
+            background: linear-gradient(135deg, #38b2ac 0%, #319795 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            font-weight: 600;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(56, 178, 172, 0.4);
+            animation: pulse-green 2s infinite;
+        }
+
+        @keyframes pulse-green {
+            0%, 100% {
+                box-shadow: 0 4px 15px rgba(56, 178, 172, 0.4);
+            }
+            50% {
+                box-shadow: 0 4px 25px rgba(56, 178, 172, 0.6);
+            }
+        }
+
+        .deadline-label {
+            font-size: 0.75rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .deadline-date {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2d3748;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .form-group:focus-within label {
+            color: #667eea;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .required {
+            color: #e53e3e;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-submit:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-submit::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-submit:active::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        .organizers {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px dashed #e2e8f0;
+        }
+
+        .organizers-title {
+            font-size: 0.9rem;
+            color: #718096;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .organizers-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #2d3748;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .success-message {
+            display: none;
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            color: #155724;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border-left: 5px solid #28a745;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .error-message {
+            display: none;
+            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+            color: #721c24;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border-left: 5px solid #dc3545;
+            font-size: 0.9rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: #2d3748;
+            margin: 30px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 10px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            transition: all 0.3s;
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .radio-option:hover {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .radio-option input[type="radio"] {
+            width: auto;
+            margin: 0;
+        }
+
+        .radio-option.selected {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .dance-partner-section {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 20px;
+            border: 2px dashed #ee5a6f;
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .dance-partner-section.active {
+            display: block;
+        }
+
+        .dance-icon {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        /* Drink selection styles */
+        .drink-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .drink-card {
+            border: 2px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .drink-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .drink-card.selected {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            transform: scale(1.02);
+        }
+
+        .drink-card.alcoholic.selected {
+            border-color: #e53e3e;
+            background: linear-gradient(135deg, #e53e3e15 0%, #c5303015 100%);
+        }
+
+        .drink-card.non-alcoholic.selected {
+            border-color: #38a169;
+            background: linear-gradient(135deg, #38a16915 0%, #2f855a15 100%);
+        }
+
+        .drink-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .drink-title {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 5px;
+        }
+
+        .drink-desc {
+            font-size: 0.85rem;
+            color: #718096;
+        }
+
+        .drink-card input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .age-verification {
+            background: linear-gradient(135deg, #fffaf0 0%, #feebc8 100%);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            border-left: 4px solid #ed8936;
+            display: none;
+        }
+
+        .age-verification.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .age-verification-title {
+            font-weight: 600;
+            color: #c05621;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin-top: 4px;
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .info-section {
+                padding: 20px;
+            }
+
+            .highlight-banner h2 {
+                font-size: 1.4rem;
+            }
+
+            .drink-options {
+                grid-template-columns: 1fr;
+            }
+
+            .price-box .price {
+                font-size: 2rem;
+            }
+        }
+
+        .floating-decoration {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.1;
+            animation: float-decoration 6s ease-in-out infinite;
+        }
+
+        @keyframes float-decoration {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .feature-list li::before {
+            content: '💃';
+            position: absolute;
+            left: 0;
+        }
+
+        .feature-list li:nth-child(even)::before {
+            content: '🕺';
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    
+    <div class="container">
+        <div class="floating-decoration" style="top: 20px; left: 20px;">🎓</div>
+        <div class="floating-decoration" style="bottom: 20px; right: 20px; animation-delay: 3s;">🎊</div>
+        
+        <div class="header">
+            <div class="badge">
+                <span>★★★★★</span>
+                <span>50 BOYS</span>
+                <span>★★★★★</span>
+            </div>
+            <h1>Festa de Encerramento</h1>
+            <p class="subtitle">Escola Evangélica Peniel</p>
+        </div>
+
+        <div class="highlight-banner">
+            <h2>💃 Baile do Ano Letivo 🕺</h2>
+            <p>Traga o seu par e venha dançar connosco! Cada um com o seu par para uma noite inesquecível.</p>
+        </div>
+
+        <div class="info-section">
+            <h2 class="info-title">
+                <span>📋</span>
+                Informações do Evento
+            </h2>
+            <div class="info-content">
+                <p>🎉 <strong>Celebração de Fim de Ano Letivo & Baile</strong></p>
+                <p>Estamos organizando uma festa especial para celebrar o encerramento do ano letivo na <span class="highlight">Escola Evangélica Peniel</span>. Este ano temos uma novidade especial: o <strong>Baile do Ano Letivo</strong> onde cada participante poderá trazer o seu par para uma noite de dança e diversão!</p>
+                
+                <div class="price-box">
+                    <div class="price-label">💰 Valor do Pagamento</div>
+                    <div class="price">8.000 XOF</div>
+                    <div style="font-size: 0.9rem; opacity: 0.9;">Por pessoa</div>
+                </div>
+
+                <div class="deadline-box">
+                    <div class="event-date">
+                        <span class="deadline-label">🎉 DATA DA FESTA</span>
+                        <span class="deadline-date">25 de Junho 2026</span>
+                    </div>
+                    <div class="confirmation-deadline">
+                        <span class="deadline-label">📅 CONFIRMAÇÃO DE INSCRISÃO ATÉ DIA</span>
+                        <span class="deadline-date">03 de Junho 2026</span>
+                    </div>
+                    <div class="payment-deadline">
+                        <span class="deadline-label">💳 DATA DO PAGAMENTO ATÉ DIA</span>
+                        <span class="deadline-date">15 de Junho 2026</span>
+                    </div>
+                </div>
+                
+                <br>
+                <p><strong>O que esperar:</strong></p>
+                <ul class="feature-list">
+                    <li>Música e entretenimento ao vivo</li>
+                    <li>Baile com pares - cada um com o seu par</li>
+                    <li>Concurso de melhor casal de dança</li>
+                    <li>Bar completo: bebidas alcoólicas e não alcoólicas</li>
+                    <li>Refeições especiais </li>
+                    <li>Fotografia profissional do evento</li>
+                    <li>Convívio entre amigos e colegas</li>
+                    <li>Surpresas e momentos especiais</li>
+                </ul>
+                <br>
+                <p style="font-style: italic; color: #ee5a6f; font-weight: 600;">💡 Nota: Para participar no baile, confirme abaixo se virá com par e escolha sua preferência de bebida.</p>
+                <p style="font-style: italic; color: #667eea;">Confirme sua presença preenchendo o formulário abaixo. Sua participação é muito importante para nós! 🙏</p>
+            </div>
+        </div>
+
+        <div id="successMessage" class="success-message">
+            ✅ Confirmação enviada com sucesso! Redirecionando para o WhatsApp...
+        </div>
+        
+        <div id="errorMessage" class="error-message">
+            ⚠️ Por favor, preencha todos os campos obrigatórios.
+        </div>
+
+        <form id="rsvpForm">
+            <h3 class="section-title">
+                <span>👤</span>
+                Dados Pessoais
+            </h3>
+
+            <div class="form-group">
+                <label for="nome">Nome Completo <span class="required">*</span></label>
+                <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+            </div>
+
+            <div class="form-group">
+                <label for="sala">Sala/Turma <span class="required">*</span></label>
+                <select id="sala" name="sala" required>
+                    <option value="">Selecione sua turma</option>
+                    <option value="1º Ano">1º Ano</option>
+                    <option value="2º Ano">2º Ano</option>
+                    <option value="3º Ano">3º Ano</option>
+                    <option value="4º Ano">4º Ano</option>
+                    <option value="5º Ano">5º Ano</option>
+                    <option value="6º Ano">6º Ano</option>
+                    <option value="7º Ano">7º Ano</option>
+                    <option value="8º Ano">8º Ano</option>
+                    <option value="9º Ano">9º Ano</option>
+                    <option value="10º Ano">10º Ano</option>
+                    <option value="11º Ano">11º Ano</option>
+                    <option value="12º Ano">12º Ano</option>
+                    <option value="Professor/Funcionário">Professor/Funcionário</option>
+                    <option value="Convidado Especial">Convidado Especial</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="telefone">Número de Telefone (WhatsApp) <span class="required">*</span></label>
+                <input type="tel" id="telefone" name="telefone" placeholder="Ex: +245 955 405 368" required>
+            </div>
+
+            <h3 class="section-title">
+                <span>💃</span>
+                Baile do Ano Letivo
+            </h3>
+
+            <div class="form-group">
+                <label>Vai participar no baile com par? <span class="required">*</span></label>
+                <div class="radio-group">
+                    <label class="radio-option" onclick="toggleDancePartner(true)">
+                        <input type="radio" name="baile" value="sim" required>
+                        <span>Sim, vou com par 💃🕺</span>
+                    </label>
+                    <label class="radio-option" onclick="toggleDancePartner(false)">
+                        <input type="radio" name="baile" value="nao" required>
+                        <span>Não, vou solo 🎭</span>
+                    </label>
+                </div>
+            </div>
+
+            <div id="dancePartnerSection" class="dance-partner-section">
+                <div class="dance-icon">💕</div>
+                <div class="form-group">
+                    <label for="nomePar">Nome Completo do Par <span class="required">*</span></label>
+                    <input type="text" id="nomePar" name="nomePar" placeholder="Digite o nome completo da pessoa que será seu par">
+                </div>
+                <div class="form-group">
+                    <label for="turmaPar">Turma do Par (se aplicável)</label>
+                    <select id="turmaPar" name="turmaPar">
+                        <option value="">Selecione a turma do par (opcional)</option>
+                        <option value="1º Ano">1º Ano</option>
+                        <option value="2º Ano">2º Ano</option>
+                        <option value="3º Ano">3º Ano</option>
+                        <option value="4º Ano">4º Ano</option>
+                        <option value="5º Ano">5º Ano</option>
+                        <option value="6º Ano">6º Ano</option>
+                        <option value="7º Ano">7º Ano</option>
+                        <option value="8º Ano">8º Ano</option>
+                        <option value="9º Ano">9º Ano</option>
+                        <option value="10º Ano">10º Ano</option>
+                        <option value="11º Ano">11º Ano</option>
+                        <option value="12º Ano">12º Ano</option>
+                        <option value="Professor/Funcionário">Professor/Funcionário</option>
+                        <option value="Convidado Externo">Convidado Externo</option>
+                        <option value="Não se aplica">Não se aplica</option>
+                    </select>
+                </div>
+                <p style="font-size: 0.9rem; color: #718096; margin-top: 10px; font-style: italic;">
+                    💡 Dica: Ambos devem confirmar presença individualmente, mas indiquem que são pares um do outro!
+                </p>
+            </div>
+
+            <h3 class="section-title">
+                <span>🍹</span>
+                Preferência de Bebida
+            </h3>
+
+            <div class="form-group">
+                <label>Escolha sua opção de bebida para a festa: <span class="required">*</span></label>
+                <div class="drink-options">
+                    <label class="drink-card non-alcoholic" onclick="selectDrink(this, 'nao-alcoolica')">
+                        <input type="radio" name="bebida" value="nao-alcoolica" required>
+                        <span class="drink-icon">🧃</span>
+                        <div class="drink-title">Sucos & Refrigerantes</div>
+                        <div class="drink-desc">Opções refrescantes sem álcool</div>
+                    </label>
+                    
+                    <label class="drink-card alcoholic" onclick="selectDrink(this, 'alcoolica')">
+                        <input type="radio" name="bebida" value="alcoolica" required>
+                        <span class="drink-icon">🍷</span>
+                        <div class="drink-title">Bebidas Alcoólicas</div>
+                        <div class="drink-desc">Cerveja, vinho e outros</div>
+                    </label>
+                </div>
+            </div>
+
+            <div id="ageVerification" class="age-verification">
+                <div class="age-verification-title">
+                    <span>⚠️</span>
+                    <span>Confirmação de Idade</span>
+                </div>
+                <p style="font-size: 0.9rem; color: #744210; margin-bottom: 10px;">
+                    Ao selecionar bebidas alcoólicas, confirma que tem idade legal para consumir álcool (18+ anos) e assume total responsabilidade pelo consumo.
+                </p>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="idadeConfirmada" name="idadeConfirmada">
+                    <label for="idadeConfirmada" style="font-size: 0.9rem; color: #744210;">
+                        Confirmo que tenho 18 anos ou mais e assumo responsabilidade pelo consumo de bebidas alcoólicas
+                    </label>
+                </div>
+            </div>
+
+            <h3 class="section-title">
+                <span>📝</span>
+                Informações Adicionais
+            </h3>
+
+            <div class="form-group">
+                <label for="motivacao">Motivação para Participar <span class="required">*</span></label>
+                <textarea id="motivacao" name="motivacao" placeholder="Conte-nos por que você quer participar desta festa especial..." required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="observacoes">Outras Informações / Observações</label>
+                <textarea id="observacoes" name="observacoes" placeholder="Alguma restrição alimentar, necessidade especial, preferência de música para o baile, ou informação adicional?"></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                Confirmar Presença via WhatsApp
+            </button>
+        </form>
+
+        <div class="organizers">
+            <p class="organizers-title">Organizado por</p>
+            <div class="organizers-name">
+                <span>⭐</span>
+                <span>50 BOYS</span>
+                <span>⭐</span>
+            </div>
+            <p style="margin-top: 10px; color: #718096; font-size: 0.9rem;">Com dedicação e excelência ⭐⭐⭐⭐⭐</p>
+        </div>
+    </div>
+
+    <script>
+        // Create floating particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 20; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Toggle dance partner section
+        function toggleDancePartner(show) {
+            const section = document.getElementById('dancePartnerSection');
+            const nomePar = document.getElementById('nomePar');
+            
+            if (show) {
+                section.classList.add('active');
+                nomePar.setAttribute('required', 'required');
+            } else {
+                section.classList.remove('active');
+                nomePar.removeAttribute('required');
+                nomePar.value = '';
+                document.getElementById('turmaPar').value = '';
+            }
+            
+            // Update radio button styling
+            document.querySelectorAll('.radio-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            event.currentTarget.classList.add('selected');
+        }
+
+        // Drink selection
+        function selectDrink(element, type) {
+            // Remove selected from all
+            document.querySelectorAll('.drink-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            // Add selected to clicked
+            element.classList.add('selected');
+            
+            // Show/hide age verification
+            const ageVerification = document.getElementById('ageVerification');
+            const checkbox = document.getElementById('idadeConfirmada');
+            
+            if (type === 'alcoolica') {
+                ageVerification.classList.add('active');
+                checkbox.setAttribute('required', 'required');
+            } else {
+                ageVerification.classList.remove('active');
+                checkbox.removeAttribute('required');
+                checkbox.checked = false;
+            }
+        }
+
+        // Form submission
+        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const nome = document.getElementById('nome').value.trim();
+            const sala = document.getElementById('sala').value;
+            const telefone = document.getElementById('telefone').value.trim();
+            const motivacao = document.getElementById('motivacao').value.trim();
+            const observacoes = document.getElementById('observacoes').value.trim();
+            const baile = document.querySelector('input[name="baile"]:checked');
+            const bebida = document.querySelector('input[name="bebida"]:checked');
+            
+            let nomePar = '';
+            let turmaPar = '';
+            
+            if (baile && baile.value === 'sim') {
+                nomePar = document.getElementById('nomePar').value.trim();
+                turmaPar = document.getElementById('turmaPar').value;
+                
+                if (!nomePar) {
+                    document.getElementById('errorMessage').textContent = '⚠️ Por favor, indique o nome do seu par para o baile.';
+                    document.getElementById('errorMessage').style.display = 'block';
+                    document.getElementById('successMessage').style.display = 'none';
+                    setTimeout(() => {
+                        document.getElementById('errorMessage').style.display = 'none';
+                    }, 3000);
+                    return;
+                }
+            }
+            
+            // Check age verification if alcoholic selected
+            if (bebida && bebida.value === 'alcoolica') {
+                const idadeConfirmada = document.getElementById('idadeConfirmada').checked;
+                if (!idadeConfirmada) {
+                    document.getElementById('errorMessage').textContent = '⚠️ Por favor, confirme que tem idade legal para consumir bebidas alcoólicas.';
+                    document.getElementById('errorMessage').style.display = 'block';
+                    document.getElementById('successMessage').style.display = 'none';
+                    setTimeout(() => {
+                        document.getElementById('errorMessage').style.display = 'none';
+                    }, 3000);
+                    return;
+                }
+            }
+            
+            // Validation
+            if (!nome || !sala || !telefone || !motivacao || !baile || !bebida) {
+                document.getElementById('errorMessage').textContent = '⚠️ Por favor, preencha todos os campos obrigatórios.';
+                document.getElementById('errorMessage').style.display = 'block';
+                document.getElementById('successMessage').style.display = 'none';
+                setTimeout(() => {
+                    document.getElementById('errorMessage').style.display = 'none';
+                }, 3000);
+                return;
+            }
+            
+            // Hide error, show success
+            document.getElementById('errorMessage').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Prepare WhatsApp message - TODOS os dados incluídos
+            let mensagem = `🎉 *CONFIRMAÇÃO DE PRESENÇA - FESTA DE ENCERRAMENTO* 🎉%0A%0A` +
+                          `━━━━━━━━━━━━━━━━━━━━━%0A` +
+                          `👤 *DADOS PESSOAIS*%0A` +
+                          `━━━━━━━━━━━━━━━━━━━━━%0A` +
+                          `*Nome:* ${nome}%0A` +
+                          `*Sala/Turma:* ${sala}%0A` +
+                          `*Telefone:* ${telefone}%0A%0A`;
+            
+            // Baile info
+            mensagem += `━━━━━━━━━━━━━━━━━━━━━%0A` +
+                       `💃 *BAILE DO ANO LETIVO*%0A` +
+                       `━━━━━━━━━━━━━━━━━━━━━%0A`;
+            
+            if (baile.value === 'sim') {
+                mensagem += `*Participação:* Sim, vou com par 💃🕺%0A` +
+                           `*Nome do Par:* ${nomePar}%0A`;
+                if (turmaPar) {
+                    mensagem += `*Turma do Par:* ${turmaPar}%0A`;
+                } else {
+                    mensagem += `*Turma do Par:* Não especificada%0A`;
+                }
+            } else {
+                mensagem += `*Participação:* Não, vou solo 🎭%0A` +
+                           `*Motivo para ir solo:* ${motivacao}%0A`;
+            }
+            
+            mensagem += `%0A`;
+            
+            // Bebida - sempre incluída agora
+            const bebidaTexto = bebida.value === 'alcoolica' ? 'Bebidas Alcoólicas 🍷' : 'Sucos & Refrigerantes 🧃';
+            mensagem += `━━━━━━━━━━━━━━━━━━━━━%0A` +
+                       `🍹 *PREFERÊNCIA DE BEBIDA*%0A` +
+                       `━━━━━━━━━━━━━━━━━━━━━%0A` +
+                       `*Opção escolhida:* ${bebidaTexto}%0A`;
+            
+            if (bebida.value === 'alcoolica') {
+                mensagem += `*Confirmação de idade:* ✓ Confirmo que tenho 18+ anos%0A`;
+            }
+            
+            mensagem += `%0A`;
+            
+            // Informações adicionais (mostrar motivação também quando vai com par)
+            if (baile.value === 'sim') {
+                mensagem += `━━━━━━━━━━━━━━━━━━━━━%0A` +
+                           `📝 *INFORMAÇÕES ADICIONAIS*%0A` +
+                           `━━━━━━━━━━━━━━━━━━━━━%0A` +
+                           `*Motivação para participar:* ${motivacao}%0A`;
+                
+                if (observacoes && observacoes.trim() !== '') {
+                    mensagem += `*Observações:* ${observacoes}%0A`;
+                } else {
+                    mensagem += `*Observações:* Nenhuma%0A`;
+                }
+                
+                mensagem += `%0A`;
+            }
+            
+            // Preço e pagamento - sempre incluído
+            mensagem += `━━━━━━━━━━━━━━━━━━━━━%0A` +
+                       `💰 *INFORMAÇÕES DE PAGAMENTO*%0A` +
+                       `━━━━━━━━━━━━━━━━━━━━━%0A` +
+                       `*Valor:* 7.500 XOF%0A` +
+                       `*Data da Festa:* 25 de Junho de 2026 🎉%0A` +
+                       `*Data limite confirmação:* 15 de Junho de 2026%0A` +
+                       `*Data limite pagamento:* 20 de Junho de 2026%0A` +
+                       `*Status:* Aguardando pagamento ⏳%0A%0A`;
+            
+            mensagem += `✅ _Confirmação enviada via formulário oficial_%0A` +
+                       `📅 _Data do envio: ${new Date().toLocaleDateString('pt-PT')}_`;
+            
+            // NOVO número de WhatsApp
+            const whatsappNumber = '245966798418';
+            
+            // Open WhatsApp after short delay
+            setTimeout(() => {
+                window.open(`https://wa.me/${whatsappNumber}?text=${mensagem}`, '_blank');
+            }, 1500);
+        });
+
+        // Input animations
+        const inputs = document.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
